@@ -1,7 +1,9 @@
+*
 *.[oa]
 *.code-workspace
 *.in
 *.out
 *~
 .vscode
+!*/
 !*.cpp
