@@ -4,9 +4,10 @@
 #include<tuple>
 #include<stdexcept>
 #include<map>
+#include<algorithm>
 using namespace std;
 
-int main()
+void test_map()
 {
     map<char,int> mymap;
     map<char,int>::iterator it;
@@ -23,7 +24,24 @@ int main()
     {
         cout<<it->first<<' '<<it->second<<endl;
     }
+}
 
+auto cmp = [](int a, int b){return a<b;};
+
+void test_lambda()
+{
+    int a[3]={1,2,3};
+    sort(a,a+2,cmp);
+    for (int i=0; i<3; ++i)
+    {
+        cout<<a[i]<<endl;
+    }
+}
+
+int main()
+{
+
+    test_lambda();
     return 0;
 
 }
