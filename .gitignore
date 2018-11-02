@@ -1,9 +1,8 @@
-*
-!*.*
 *.[oa]
 *.code-workspace
 *.in
 *.out
 *~
-tmp/
-/tmp
+.vscode
+!*.*
+*
