@@ -1,6 +1,9 @@
+*
+!*.*
 *.[oa]
-*~
-*.out
+*.code-workspace
 *.in
+*.out
+*~
 tmp/
 /tmp
