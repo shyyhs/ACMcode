@@ -20,9 +20,7 @@ using namespace std;
 FILE* fin = fopen("probname.in","r");
 FILE* fout = fopen("probname.out","w");
 
-int n,tmp;
-char c;
-string s;
+int n;
 
 //fscanf(fin,"",);
 //fprintf(fout,"",);
