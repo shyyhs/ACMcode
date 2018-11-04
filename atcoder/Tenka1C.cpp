@@ -5,54 +5,32 @@
 #include<cmath>
 #include<algorithm>
 using namespace std;
+int n;
+int a[200000];
+int tmp[300000];
 
-int n,a[200000];
-int s[400000];
-int left_p,right_p,min_start,max_start;
-long long sum;
-bool flag=0;
-long long calcu(int *a)
+void init()
 {
-    left_p=right_p=200000;
-    if (n%2==1) s[left_p--]=a[0],min_start=1;else min_start=0;
-    right_p++;
-    max_start = n-1;
-    while (min_start<=max_start)
-    {
-        if(flag==0)
-        {
-        s[left_p--] = a[max_start--];
-        if (min_start<=max_start) s[right_p++] = a[max_start--];
-        }else
-        {
-            s[left_p--]=a[min_start++];
-           if (min_start<=max_start) s[right_p++]=a[min_start++];
-        }
-        flag=1^flag;
-    }
-    long long sum_temp=0;
-    for (int i=left_p+1; i<=right_p-2; ++i)
-    {
-        sum_temp+=abs(s[i]-s[i+1]);
-    }
-    return sum_temp;
+    cin>>n;
+    for (int i=0; i<n; ++i)
+        cin>>a[i];
+    sort(a,a+n); 
 }
 
-//struct greater
-//{
-    //template<class T>
-        //bool operator()(T const &a, T const &b) const{return a>b;}
-//};
+void work()
+{
+    int t=(n-1)/2;
+    long long sum=(n%2)?max((a[t]+a[t-1]),3*a[t]-a[t+1]):a[t]-a[t+1];
+    for (int i=0; i<=t; ++i)
+        sum-=2*a[i];
+    for (int i=t+1; i<n; ++i)
+        sum+=2*a[i];
+    cout<<sum<<endl;
+}
 
 int main()
 {
-    scanf("%d",&n);
-    for (int i=0; i<n; ++i)
-        scanf("%d",&a[i]);
-    sort(a,a+n);
-    sum = calcu(a);
-    sort(a,a+n,greater<int>());
-    sum = max(sum,calcu(a));
-    printf("%lld\n",sum);
+    init();
+    work();
     return 0;
 }

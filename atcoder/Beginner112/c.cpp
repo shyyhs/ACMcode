@@ -28,6 +28,7 @@ void work()
         for (Cy=0; Cy<=100; ++Cy)
         {
             int flag=1,Htmp=0,firstHFlag=0;
+            for (int t=0; t<2; ++t)
             for (int i=0; i<n; ++i)
             {
                 if (h[i]>0)
