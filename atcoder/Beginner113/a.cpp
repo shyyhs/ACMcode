@@ -9,10 +9,11 @@
 
 using namespace std;
 int n;
-
+int a,b;
 void init()
 {
-
+cin>>a>>b;
+cout<<a+b/2<<endl;
 }
 void work()
 {
