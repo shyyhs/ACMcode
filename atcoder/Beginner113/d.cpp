@@ -1,50 +1,14 @@
 #include<iostream>
-#include<fstream>
-#include<cstdio>
-#include<cstdlib>
-#include<cmath>
-#include<string>
-#include<cstring>
-#include<algorithm>
-
-using namespace std;
-int n,m,k;
-int tot;
-long long ans=0;
-long long MOD=1000000007;
-
-void init()
-{
-    cin>>n>>m>>k;
-}
-long long rpow(long long a, long long b)
-{
-    long long ans=1;
-    for (int i=1; i<=b; ++i)
-        ans=(ans*a)%MOD;
-    return ans;
-}
-
-void work()
-{
-    tot=(m-1)*n; 
-    if (k-1>n)
-    {
-        cout<<0<<endl;
-        return 0;
-    }
-    int remain=n-(k-1);
-            //a in first line b in last line
-            //rpow(2,tot+a+b-2*(n-1+k-1));
-            //only need k-1+k-1-1 totally k-1+n-1
-
-}
-
+#define ll long long 
+int n,m,k,i,j;
+ll d[150][9];
+ll p[8]={1,1,2,3,5,8,13,21};
 int main()
 {
-    init();
-    work();
-    return 0;
+    std::cin>>n>>m>>k;
+    d[0][0]=1;
+    for (i=0; i<n; ++i)
+        for (j=0; j<m;++j)
+            d[i+1][j]=(d[i][j]*p[j]*p[m-j-1]+(j>0)*d[i][j-1]*p[j-1]*p[m-j-1]+(j<m-1)*d[i][j+1]*p[j]*p[m-j-2])%1000000007;
+    std::cout<<d[n][k-1];
 }
-
-
