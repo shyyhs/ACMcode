@@ -19,68 +19,52 @@ void init()
             scanf("%d",&w[i][j]);
 }
 
-int check()
-{
-    int s=0;
-    for (int i=0; i<n; ++i)
-        for (int j=0; j<m; ++j)
-        {
-            if (w[i][j]%2)
-            {
-                s++;
-                if (s>1) return 1;
-            }
-        }
-    return 0;
-}
-
 struct T
 {
     int i,j,k,l;
-}outS[510*510*20];
+}ot[500*500*2];
 int len=0;
+void calNext(int i,int j,int &k,int &l)
+{
+    if ((i%2==0) && (j<m-1))
+    {
+        k=i; l=j+1;
+    }
+    if ((i%2==0) && (j==m-1))
+    {
+        k=i+1; l=j;
+    }
+    if ((i%2==1) && (j!=0))
+    {
+        k=i; l=j-1;
+    }
+    if ((i%2==1) && (j==0))
+    {
+        k=i+1; l=j;
+    }
+}
 void work()
 {
-    while (check())
+    for (int i=0; i<n; ++i)
     {
-        for (int i=0; i<n; ++i)
-            for (int j=0; j<m; ++j)
-                if (w[i][j]%2)
-                {
-                    inFlag=0;
-                    for (int k=i; (k<n)&&(!inFlag); ++k)
-                        for (int l=(k==i)?j+1:0; (l<m)&&(!inFlag); ++l)
-                            if (w[k][l]%2)
-                            {
-                                inFlag=1;
-                                if (i==k||j==l)
-                                {
-                                    outS[len].i=i; outS[len].j=j; outS[len].k=k; outS[len].l=l; len++;
-                                }else
-                                    if (w[i][l]%2==0)
-                                    {
-                                        outS[len].i=i; outS[len].j=j; outS[len].k=i; outS[len].l=l; len++;
-                                        outS[len].i=i; outS[len].j=l; outS[len].k=k; outS[len].l=l; len++;
-                                    }else
-                                        if (w[k][j]%2==0)
-                                        {
-                                            outS[len].i=i; outS[len].j=j; outS[len].k=k; outS[len].l=j; len++;
-                                            outS[len].i=k; outS[len].j=j; outS[len].k=k; outS[len].l=l; len++;
-                                        }else
-                                        {
-                                            outS[len].i=i; outS[len].j=j; outS[len].k=k; outS[len].l=l; len++;
-                                        }
-                                w[i][j]--; w[k][l]++;
-                                i=k; j=l;
-                            }
-                }
-    }   
+        int Begin=(i%2)?m-1:0;
+        int End=(i%2)?-1:m;
+        int Itr=(i%2)?-1:1;
+        for (int j=Begin; j!=End; j+=Itr)
+        {
+            if (w[i][j]%2)
+            {
+                int k,l;
+                calNext(i,j,k,l);
+                w[i][j]--; w[k][l]++;
+                if (k<n){ot[len].i=i; ot[len].j=j;ot[len].k=k;ot[len].l=l;len++;}
+            }
+        }
+    }
     cout<<len<<endl;
     for (int i=0; i<len; ++i)
-        printf("%d %d %d %d\n",outS[i].i+1,outS[i].j+1,outS[i].k+1,outS[i].l+1);
+        printf("%d %d %d %d\n",ot[i].i+1,ot[i].j+1,ot[i].k+1,ot[i].l+1);
 }
-
-
 int main()
 {
     init();
