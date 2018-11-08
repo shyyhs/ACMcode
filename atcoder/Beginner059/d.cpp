@@ -7,32 +7,24 @@
 #include<cstring>
 #include<algorithm>
 using namespace std;
-#define ll long long
 
-int X,Y;
-bool flag[110][110];
-bool wins[100][100];
-int n,m;
-
-bool alice(int i,int j)
-{
-    if (flag[i][j]) return wins[i][j];
-    if (i==0 && j==0)
-    {
-
-
-}
-
+int n;
 
 void init()
 {
 
-    cin>>X>>Y;
 }
+
+void work()
+{
+
+}
+
 
 int main()
 {
     init();
+    work();
     return 0;
 }
 
