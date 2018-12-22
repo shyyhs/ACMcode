@@ -7,33 +7,33 @@
 #include<algorithm>
 #include<ctime>
 #include<random>
+#include<map>
 #define ll long long
 using namespace std;
-int n;
-int a[450000];
-int s[450000];
 char c;
+int n;
+ll sumLoc=0;
+ll sumB=0;
 
 int main()
 {
-    while(true)
+    int loc=0;
+    while (true)
     {
         scanf("%c",&c);
+        if (c!='B' && c!='W') break;
+        n++;
+        loc=n-1;
         if (c=='B')
-            a[n++]=1;
-        else if (c=='W')
-            a[n++]=0;
-        else break;
+        {
+            sumLoc+=loc;
+            sumB+=1;
+        }
     }
-    for (int i=0; i<n; ++i)
-    {
-        if (i==0) s[i]=a[i];
-        else s[i]=s[i-1]+a[i];
-    }
-    ll ans=0;
-    for (int i=0; i<n; ++i)
-        if (a[i]==0)
-            ans+=s[i];
-    cout<<ans<<endl;
+    ll startLoc = loc-sumB+1;
+    ll finalLoc = loc;
+    cout<<(finalLoc+startLoc)*sumB/2-sumLoc<<endl;
     return 0;
 }
+
+
