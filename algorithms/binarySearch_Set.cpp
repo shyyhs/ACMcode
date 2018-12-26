@@ -102,3 +102,4 @@ int main()
     cout<<binarySearch(1,MAXN)<<endl;
     return 0;
 }
+
