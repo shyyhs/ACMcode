@@ -2,14 +2,11 @@
 #include<cstdio>
 #include<cstdlib>
 #include<cmath>
-#include<string>
 #include<cstring>
+#include<string>
+#include<ctime>
 #include<algorithm>
-#include<queue>
-#include<map>
-#include<set>
-typedef long long ll;
-const ll longinf=1LL<<60;
+#define ll long long 
 using namespace std;
 
 int main()

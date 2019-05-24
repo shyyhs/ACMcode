@@ -1,19 +1,18 @@
 #include<iostream>
+#include<fstream>
 #include<cstdio>
 #include<cstdlib>
-#include<cmath>
+#include<math>
+#include<ctime>
 #include<string>
 #include<cstring>
 #include<algorithm>
+#include<vector>
 #include<queue>
 #include<map>
 #include<set>
-typedef long long ll;
-const ll longinf=1LL<<60;
+#define ll long long
+
 using namespace std;
 
-int main()
-{
-    return 0;
-}
 
