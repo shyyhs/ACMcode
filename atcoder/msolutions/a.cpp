@@ -12,9 +12,12 @@ typedef long long ll;
 const ll longinf=1LL<<60;
 using namespace std;
 
+int n;
 
 int main()
 {
+    cin>>n;
+    cout<<(n-2)*180<<endl;
     return 0;
 }
 
